@@ -1,0 +1,214 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Tree Viewer</title>
+
+<style>
+body {
+  font-family: sans-serif;
+  padding: 20px;
+}
+
+ul.tree {
+  list-style: none;
+  margin-left: 16px;
+  padding-left: 10px;
+}
+
+.children {
+  margin-left: 14px;
+}
+
+.node {
+  padding: 2px 6px;
+  border-radius: 4px;
+  cursor: pointer;
+  outline: none;
+}
+
+.node:focus {
+  background: #cce5ff;
+}
+
+.folder {
+  font-weight: bold;
+}
+
+.collapsed {
+  display: none;
+}
+</style>
+</head>
+
+<body>
+
+<h3>📁 data</h3>
+
+<ul class="tree">
+
+<li>
+  <div class="node folder" tabindex="0">
+    📁 sub-0011
+  </div>
+  <div class="children">
+    <ul class="tree">
+
+<li>
+  <div class="node folder" tabindex="0">
+    📁 ANTs_output
+  </div>
+  <div class="children">
+    <ul class="tree">
+
+<li>
+  <div class="node file" tabindex="0">
+    📄 sub-0011_T1w_brain.nii.gz
+  </div>
+</li>
+
+
+<li>
+  <div class="node file" tabindex="0">
+    📄 sub-0011_T1w_brain_mask.nii.gz
+  </div>
+</li>
+
+</ul>
+  </div>
+</li>
+
+
+<li>
+  <div class="node file" tabindex="0">
+    📄 sub-0011_fmri.nii.gz
+  </div>
+</li>
+
+
+<li>
+  <div class="node file" tabindex="0">
+    📄 sub-0011_T1w.nii.gz
+  </div>
+</li>
+
+</ul>
+  </div>
+</li>
+
+
+<li>
+  <div class="node folder" tabindex="0">
+    📁 sub-0012
+  </div>
+  <div class="children">
+    <ul class="tree">
+
+<li>
+  <div class="node folder" tabindex="0">
+    📁 ANTs_output
+  </div>
+  <div class="children">
+    <ul class="tree">
+
+<li>
+  <div class="node file" tabindex="0">
+    📄 sub-0012_T1w_brain.nii.gz
+  </div>
+</li>
+
+
+<li>
+  <div class="node file" tabindex="0">
+    📄 sub-0012_T1w_brain_mask.nii.gz
+  </div>
+</li>
+
+</ul>
+  </div>
+</li>
+
+
+<li>
+  <div class="node file" tabindex="0">
+    📄 sub-0012_fmri.nii.gz
+  </div>
+</li>
+
+
+<li>
+  <div class="node file" tabindex="0">
+    📄 sub-0012_T1w.nii.gz
+  </div>
+</li>
+
+</ul>
+  </div>
+</li>
+
+</ul>
+
+<script>
+function visibleNodes() {
+  return Array.from(document.querySelectorAll(".node"))
+    .filter(n => n.offsetParent !== null);
+}
+
+document.addEventListener("keydown", (e) => {
+  const active = document.activeElement;
+  if (!active.classList.contains("node")) return;
+
+  const nodes = visibleNodes();
+  let i = nodes.indexOf(active);
+
+  switch(e.key) {
+
+    case "ArrowDown":
+      e.preventDefault();
+      if (i < nodes.length - 1) {
+        nodes[i + 1].focus();
+        nodes[i + 1].scrollIntoView({block: "nearest"});
+      }
+      break;
+
+    case "ArrowUp":
+      e.preventDefault();
+      if (i > 0) {
+        nodes[i - 1].focus();
+        nodes[i - 1].scrollIntoView({block: "nearest"});
+      }
+      break;
+
+    case "ArrowRight":
+      e.preventDefault();
+      if (active.classList.contains("folder")) {
+        const children = active.parentElement.querySelector(".children");
+        if (children) children.classList.remove("collapsed");
+      }
+      break;
+
+    case "ArrowLeft":
+      e.preventDefault();
+
+      const parentChildren = active.closest(".children");
+      if (parentChildren && parentChildren.classList.contains("children")) {
+        parentChildren.classList.add("collapsed");
+
+        const parentFolder = parentChildren.parentElement.querySelector(".node.folder");
+        if (parentFolder) parentFolder.focus();
+      }
+      break;
+
+    case "Enter":
+      e.preventDefault();
+      if (active.classList.contains("folder")) {
+        const children = active.parentElement.querySelector(".children");
+        if (children) children.classList.toggle("collapsed");
+      }
+      break;
+  }
+});
+</script>
+
+</body>
+</html>
