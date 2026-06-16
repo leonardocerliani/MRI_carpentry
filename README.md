@@ -49,3 +49,6 @@ Instead of dealing with voxel-wise connectivity matrices of 10k² elements, a co
 
 ## [13 marimo server](gerla/13_marimo-server)
 A self-hosted lab server that makes interactive [marimo](https://marimo.io/) Python notebooks available to all lab members through a single browser URL — no local installation required. Each app runs in its own Docker container, the whole stack is orchestrated with `docker compose` and a Caddy reverse proxy, and all access is secured through an SSH tunnel.
+
+## [14 Nifti Yazi](gerla/14_Nifti_Yazi)
+A [Yazi](https://yazi-rs.github.io) terminal previewer plugin for NIfTI neuroimaging files (`.nii` and `.nii.gz`), using [FSL](https://fsl.fmrib.ox.ac.uk/) `slicer` utility to generate a composite image of the mid-axial/sagittal/coronal slices. Particularly useful if you work on a remote server using SSH.
