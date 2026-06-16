@@ -2,6 +2,8 @@
 
 A quasi-random collection of strongly opinionated small tutorials that can help getting started with processing MRI images, mostly using [FSL](https://fsl.fmrib.ox.ac.uk/fsl/docs/#/). In the future, it might get more organized.
 
+If you find something useful to you, I would appreciate if you could leave a ⭐ 
+
 Other notable resources:
 - [Better code, better science](https://bettercodebetterscience.github.io/book/) : forthcoming bible of MRI Analytic Engineering by [Russel Poldrack](https://profiles.stanford.edu/russell-poldrack)
 
