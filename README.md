@@ -4,11 +4,9 @@ A quasi-random collection of strongly opinionated small tutorials that can help 
 
 If you find something useful to you, I would appreciate if you could leave a ⭐ 
 
-Other notable resources:
+Notable resources:
 - [Better code, better science](https://bettercodebetterscience.github.io/book/) : forthcoming bible of MRI Analytic Engineering by [Russel Poldrack](https://profiles.stanford.edu/russell-poldrack)
-
 - [Paperclip gxl](https://paperclip.gxl.ai/) : forthcoming standard for AI Agent-first navigation of the scientific literature
-
 - [Our MRI preprocessing pipeline](https://github.com/leonardocerliani/MRI_hackaton) (continously updating)
 
 ## [00 begin here](gerla/00_begin_here)
